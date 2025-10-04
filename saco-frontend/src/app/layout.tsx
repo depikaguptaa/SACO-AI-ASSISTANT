@@ -17,12 +17,12 @@ export const metadata: Metadata = {
   description: "Intelligent Location Analysis & Amenity Discovery - Powered by SACO Consulting",
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
-      { url: '/favicon.ico', sizes: '16x16', type: 'image/x-icon' }
+      { url: '/icon.ico', sizes: 'any' },
+      { url: '/icon.ico', sizes: '32x32', type: 'image/x-icon' },
+      { url: '/icon.ico', sizes: '16x16', type: 'image/x-icon' }
     ],
-    apple: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    apple: '/icon.ico',
+    shortcut: '/icon.ico',
   },
   manifest: '/manifest.json',
 };
@@ -35,9 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/icon.ico" />
+        <link rel="apple-touch-icon" href="/icon.ico" />
         <meta name="theme-color" content="#000000" />
       </head>
       <body
