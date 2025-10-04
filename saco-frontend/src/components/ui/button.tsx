@@ -1,10 +1,9 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { motion, HTMLMotionProps } from 'framer-motion';
-import { MovingBorder } from './moving-border';
 
 interface ButtonProps extends Omit<HTMLMotionProps<"button">, "children"> {
-  variant?: 'default' | 'outline' | 'ghost' | 'moving-border';
+  variant?: 'default' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
 }
@@ -24,30 +23,6 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       'h-10 px-4 py-2': size === 'md',
       'h-11 px-8 text-lg': size === 'lg',
     };
-
-    if (variant === 'moving-border') {
-      return (
-        <MovingBorder
-          duration={2000}
-          className="rounded-md"
-        >
-          <motion.button
-            className={cn(
-              baseClasses,
-              sizeClasses,
-              'bg-black text-white border-0',
-              className
-            )}
-            ref={ref}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            {...props}
-          >
-            {children}
-          </motion.button>
-        </MovingBorder>
-      );
-    }
 
     return (
       <motion.button
