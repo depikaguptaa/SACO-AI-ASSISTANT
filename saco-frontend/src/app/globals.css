@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+/* Professional Black Theme */
+
+:root {
+    --background: #000000;
+    --foreground: #ffffff;
+    --card: #111111;
+    --card-foreground: #ffffff;
+    --popover: #111111;
+    --popover-foreground: #ffffff;
+    --primary: #ffffff;
+    --primary-foreground: #000000;
+    --secondary: #1a1a1a;
+    --secondary-foreground: #ffffff;
+    --muted: #1a1a1a;
+    --muted-foreground: #a3a3a3;
+    --accent: #1a1a1a;
+    --accent-foreground: #ffffff;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: #333333;
+    --input: #1a1a1a;
+    --ring: #ffffff;
+    --radius: 0.5rem;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+}
+
+
+/* Force dark theme for all users */
+
+@media (prefers-color-scheme: light),
+(prefers-color-scheme: dark) {
+     :root {
+        --background: #000000;
+        --foreground: #ffffff;
+        --card: #111111;
+        --card-foreground: #ffffff;
+        --popover: #111111;
+        --popover-foreground: #ffffff;
+        --primary: #ffffff;
+        --primary-foreground: #000000;
+        --secondary: #1a1a1a;
+        --secondary-foreground: #ffffff;
+        --muted: #1a1a1a;
+        --muted-foreground: #a3a3a3;
+        --accent: #1a1a1a;
+        --accent-foreground: #ffffff;
+        --destructive: #ef4444;
+        --destructive-foreground: #ffffff;
+        --border: #333333;
+        --input: #1a1a1a;
+        --ring: #ffffff;
+    }
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+
+/* Ensure input text is visible */
+
+input,
+textarea,
+select {
+    color: #ffffff !important;
+    background-color: #1a1a1a !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #a3a3a3 !important;
+}
+
+
+/* Fix any white text on white background issues */
+
+input:focus,
+textarea:focus,
+select:focus {
+    color: #ffffff !important;
+    background-color: #1a1a1a !important;
+    border-color: #ffffff !important;
+}
+
+
+/* Aurora Background Animation */
+
+@keyframes aurora {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.aurora-bg {
+    background: linear-gradient(45deg, #1e1b4b, #312e81, #1e40af, #1d4ed8);
+    background-size: 400% 400%;
+    animation: aurora 15s ease infinite;
+}
+
+
+/* Custom scrollbar */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+
+/* Spotlight animation */
+
+@keyframes spotlight {
+    0% {
+        opacity: 0;
+        transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -40%) scale(1);
+    }
+}
+
+.animate-spotlight {
+    animation: spotlight 2s ease-out 0.75s 1 forwards;
+}
+
+
+/* White slider thumb */
+
+.slider-white-thumb::-webkit-slider-thumb {
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    border: 2px solid #374151;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider-white-thumb::-moz-range-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    border: 2px solid #374151;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
