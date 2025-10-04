@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   description: "Intelligent Location Analysis & Amenity Discovery - Powered by SACO Consulting",
   icons: {
     icon: [
-      { url: '/saco_consulting_logo.jpeg', sizes: '32x32', type: 'image/jpeg' },
-      { url: '/saco_consulting_logo.jpeg', sizes: '16x16', type: 'image/jpeg' }
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.svg', type: 'image/svg+xml' }
     ],
-    apple: '/saco_consulting_logo.jpeg',
+    apple: '/favicon.ico',
   },
 };
 
