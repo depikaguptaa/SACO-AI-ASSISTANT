@@ -16,11 +16,8 @@ export const metadata: Metadata = {
   title: "SACO AI ASSISTANT",
   description: "Intelligent Location Analysis & Amenity Discovery - Powered by SACO Consulting",
   icons: {
-    icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' }
-    ],
-    apple: '/favicon-32x32.png',
+    icon: '/saco_consulting_logo.jpeg',
+    apple: '/saco_consulting_logo.jpeg',
   },
 };
 
