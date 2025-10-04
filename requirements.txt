@@ -1,0 +1,11 @@
+langgraph
+langchain
+langchain-google-genai
+requests
+python-dotenv
+pydantic
+typing-extensions
+fastapi
+uvicorn
+python-multipart
+redis
