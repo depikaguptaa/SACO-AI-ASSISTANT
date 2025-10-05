@@ -1,0 +1,59 @@
+name: Keep Backend Alive
+
+# This workflow runs every 10 minutes to ping the backend
+on:
+  schedule:
+    # Run every 10 minutes (cron format: minute hour day month day-of-week)
+    - cron: '*/10 * * * *'
+  
+  # Also allow manual triggering
+  workflow_dispatch:
+    inputs:
+      test_mode:
+        description: 'Test mode (single run)'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  ping-backend:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Ping Backend
+        id: ping
+        run: |
+          echo "🚀 Pinging backend at $(date)"
+          
+          # Ping the backend
+          response=$(curl -s -w "%{http_code}" -o /tmp/response.json "https://saco-ai-assistant.onrender.com/ping")
+          http_code="${response: -3}"
+          
+          if [ "$http_code" = "200" ]; then
+            echo "✅ Backend is alive!"
+            echo "Response: $(cat /tmp/response.json)"
+            echo "status=success" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Backend ping failed with HTTP $http_code"
+            echo "status=failed" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+      
+      - name: Report Status
+        if: always()
+        run: |
+          if [ "${{ steps.ping.outputs.status }}" = "success" ]; then
+            echo "🎉 Keep-alive successful!"
+          else
+            echo "⚠️ Keep-alive failed - backend might be sleeping"
+          fi
+      
+      # Optional: Send notification on failure (requires additional setup)
+      - name: Notify on Failure
+        if: failure()
+        run: |
+          echo "📧 Backend ping failed - consider checking Render dashboard"
+          # You can add email/Slack notifications here if needed

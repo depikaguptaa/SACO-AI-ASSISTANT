@@ -171,6 +171,11 @@ async def health_check():
             "error": str(e)
         }
 
+@app.get("/ping")
+async def ping():
+    """Simple ping endpoint for keep-alive monitoring"""
+    return {"status": "pong", "message": "Server is alive"}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
