@@ -12,7 +12,7 @@ on:
       test_mode:
         description: 'Test mode (single run)'
         required: false
-        default: 'false'
+        default: false
         type: boolean
 
 jobs:
