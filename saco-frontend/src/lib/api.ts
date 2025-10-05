@@ -53,7 +53,14 @@ export class AddressService {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      return await response.json();
+      const result = await response.json();
+      
+      // Check if the API returned success: false
+      if (!result.success && result.error) {
+        throw new Error(result.error);
+      }
+      
+      return result;
     } catch (error) {
       console.error('Error processing address:', error);
       throw error;
@@ -98,6 +105,11 @@ export class AddressService {
       }
 
       const result = await response.json();
+      
+      // Check if the API returned success: false
+      if (!result.success && result.error) {
+        throw new Error(result.error);
+      }
       
       // Add a small delay to show the analyzing step
       await new Promise(resolve => setTimeout(resolve, 500));
